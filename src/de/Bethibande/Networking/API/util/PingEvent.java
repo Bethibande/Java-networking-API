@@ -20,6 +20,7 @@ public class PingEvent implements Listener {
     public void onPing(PacketReceivedEvent e) {
         Packet p = e.getP();
         if(p instanceof PingPacket) {
+            //already dead
             System.out.println(client.getS().isClosed());
             SendPacket.sendPacket(client.getS(), e.getP());
         }
