@@ -1,5 +1,7 @@
 package Test;
 
+import Test.PacketInEvent;
+import Test.TestPacket;
 import de.Bethibande.Networking.API.Listeners.EventManager;
 import de.Bethibande.Networking.API.SendPacket;
 import de.Bethibande.Networking.API.TCPClient;
@@ -7,7 +9,7 @@ import de.Bethibande.Networking.API.TCPConnector;
 
 public class Main2 {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         EventManager.addListener(new PacketInEvent());
         TCPConnector connector = new TCPConnector();
         connector.connect("localhost", 22927);
