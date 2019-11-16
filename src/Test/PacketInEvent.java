@@ -1,3 +1,5 @@
+package Test;
+
 import de.Bethibande.Networking.API.Listeners.EventHandler;
 import de.Bethibande.Networking.API.Listeners.Listener;
 import de.Bethibande.Networking.API.Listeners.PacketReceivedEvent;

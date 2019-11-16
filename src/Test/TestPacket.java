@@ -1,3 +1,5 @@
+package Test;
+
 import de.Bethibande.Networking.API.Packet;
 import lombok.Getter;
 

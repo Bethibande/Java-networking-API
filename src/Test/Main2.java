@@ -1,3 +1,5 @@
+package Test;
+
 import de.Bethibande.Networking.API.Listeners.EventManager;
 import de.Bethibande.Networking.API.SendPacket;
 import de.Bethibande.Networking.API.TCPClient;

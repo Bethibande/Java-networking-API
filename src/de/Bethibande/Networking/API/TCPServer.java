@@ -47,6 +47,7 @@ public class TCPServer extends Thread {
 
             server = new ServerSocket(this.port);
             this.pingThread.start();
+            Log.log(Log.LOG_LEVEL.INFO, "TCP Server started at 127.0.0.1:" + port);
             while (true) {
                 Socket s = server.accept();
                 if(s != null && s.isBound() && s.isConnected()) {

@@ -58,6 +58,7 @@ public class TCPClient extends Thread {
 
     public void kill() {
         try {
+            System.out.println("Kill Client!");
             if (s != null) {
                 s.close();
             }
