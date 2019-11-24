@@ -21,7 +21,7 @@ public class EventManager {
                         if (method.getParameters()[0].getType().getSuperclass() == Event.class && method.getParameters()[0].getType() == e.getClass()) {
                             try {
                                 method.setAccessible(true);
-                                System.out.println("Invoke " + method.getName() + " in class " + clazz.getName());
+                                //System.out.println("Invoke " + method.getName() + " in class " + clazz.getName());
                                 method.invoke(l, e);
                             } catch (IllegalAccessException | InvocationTargetException ex) {
                                 ex.printStackTrace();

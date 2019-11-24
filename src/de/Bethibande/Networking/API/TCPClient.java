@@ -31,18 +31,18 @@ public class TCPClient extends Thread {
 
     public void run() {
         try {
+            s = new Socket(address, port);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
             if(pe == null) {
                 pe = new PingEvent(this);
                 EventManager.addListener(pe);
             }
 
-            s = new Socket(address, port);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
             while(s != null && s.isConnected() && !s.isClosed() && s.isBound()) {
                 String st = reader.readLine();
                 if(st != null && !st.trim().isEmpty()) {
-                    System.out.println("in: " + st);
+                    //System.out.println("in: " + st);
                     JsonObject jobj = g.fromJson(st, JsonObject.class);
                     String className = jobj.get("className").getAsString();
                     Packet p = (Packet)g.fromJson(st, Class.forName(className));
@@ -58,7 +58,10 @@ public class TCPClient extends Thread {
 
     public void kill() {
         try {
-            System.out.println("Kill Client!");
+            EventManager.removeListener(pe);
+            pe = null;
+            System.gc();
+            //System.out.println("Kill Client!");
             if (s != null) {
                 s.close();
             }

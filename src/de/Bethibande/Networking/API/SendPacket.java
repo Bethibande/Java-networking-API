@@ -15,7 +15,7 @@ public class SendPacket {
         try {
             PrintWriter w = new PrintWriter(s.getOutputStream());
 
-            System.out.println("write " + message);
+            //System.out.println("write " + message);
             w.println(message + " \n");
             w.flush();
         } catch(Exception e) {

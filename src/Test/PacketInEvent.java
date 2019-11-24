@@ -21,9 +21,6 @@ public class PacketInEvent implements Listener {
             TestPacket tp = (TestPacket)e.getP();
             System.out.println("IN: " + tp.getMsg());
         }
-        if(c != null) {
-            System.out.println(c.getS().isClosed());
-        }
     }
 
 }

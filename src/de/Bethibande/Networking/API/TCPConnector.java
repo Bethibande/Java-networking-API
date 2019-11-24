@@ -37,6 +37,7 @@ public class TCPConnector {
                 e.printStackTrace();
             }
         }
+        EventManager.removeListener(pp);
     }
 
     public void connectToPort(int port) {

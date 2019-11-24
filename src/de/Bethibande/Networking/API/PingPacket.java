@@ -5,10 +5,10 @@ import lombok.Getter;
 public class PingPacket extends Packet {
 
     @Getter
-    private long pingTimeInSec;
+    private int pingTimeInSec;
 
     public PingPacket(long pingTimeInSec) {
-        this.pingTimeInSec = pingTimeInSec;
+        this.pingTimeInSec = (int)pingTimeInSec;
     }
 
 }

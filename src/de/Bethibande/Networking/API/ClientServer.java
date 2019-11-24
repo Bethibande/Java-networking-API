@@ -33,19 +33,18 @@ public class ClientServer extends Thread {
             while(s == null || (!s.isConnected() && !s.isBound())) {
                 s = serverSocket.accept();
             }
-            System.out.println("Socket connected: " + s.getInetAddress() + ":" + s.getPort());
+            Log.log(Log.LOG_LEVEL.INFO, "Socket connected: " + s.getInetAddress() + ":" + s.getPort());
             BufferedReader reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
             while(true) {
                 String s = reader.readLine();
                 if(s != null && !s.equals("")) {
-                    System.out.println(s);
+                    //System.out.println(s);
 
                     JsonObject jobj = g.fromJson(s, JsonObject.class);
                     String className = jobj.get("className").getAsString();
                     Packet p = (Packet)g.fromJson(s, Class.forName(className));
 
                     PacketReceivedEvent pre = new PacketReceivedEvent(p);
-                    System.out.println(pre == null);
                     EventManager.runEvent(pre);
                     PacketReceivedFromClientEvent prfce = new PacketReceivedFromClientEvent(this, p);
                     EventManager.runEvent(prfce);

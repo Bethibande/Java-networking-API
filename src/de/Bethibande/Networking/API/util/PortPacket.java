@@ -22,7 +22,7 @@ public class PortPacket implements Listener {
         if(p instanceof de.Bethibande.Networking.API.PortPacket) {
             de.Bethibande.Networking.API.PortPacket pp = (de.Bethibande.Networking.API.PortPacket)p;
             conn.connectToPort(pp.getPort());
-            System.out.println("Connect to port " + pp.getPort());
+            //System.out.println("Connect to port " + pp.getPort());
         }
     }
 

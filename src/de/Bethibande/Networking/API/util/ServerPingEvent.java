@@ -24,7 +24,7 @@ public class ServerPingEvent implements Listener {
         if(p instanceof PingPacket) {
             PingPacket pp = (PingPacket)p;
             PingThread.pinged.remove(e.getClient());
-            System.out.println("Pinged back from " + e.getClient().getS().getInetAddress() + " in " + (getTime()-pp.getPingTimeInSec()) + " sec");
+            //System.out.println("Pinged back from " + e.getClient().getS().getInetAddress() + " in " + (getTime()-pp.getPingTimeInSec()) + " sec");
         }
     }
 
