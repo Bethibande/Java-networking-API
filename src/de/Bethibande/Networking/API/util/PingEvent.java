@@ -7,7 +7,7 @@ import de.Bethibande.Networking.API.Listeners.PacketReceivedEvent;
 
 public class PingEvent implements Listener {
 
-    private TCPClient client;
+    private final TCPClient client;
 
     public PingEvent(TCPClient client) {
         this.client = client;
@@ -17,6 +17,7 @@ public class PingEvent implements Listener {
     public void onPing(PacketReceivedEvent e) {
         Packet p = e.getP();
         if(p instanceof PingPacket) {
+            //System.out.println("Sent back ping!");
             try {
                 // without this the server doesn't recognize the packet which is send back :/
                 Thread.sleep(2);
@@ -24,6 +25,7 @@ public class PingEvent implements Listener {
                 ex.printStackTrace();
             }
             SendPacket.sendPacket(client.getS(), e.getP());
+            //System.out.println("Sent back ping!");
         }
     }
 

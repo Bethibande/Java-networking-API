@@ -17,10 +17,10 @@ public class ClientServer extends Thread {
     @Getter
     private Socket s;
     @Getter
-    private ServerSocket serverSocket;
-    private Gson g = new Gson();
+    private final ServerSocket serverSocket;
+    private final Gson g = new Gson();
     @Getter
-    private TCPServer server;
+    private final TCPServer server;
 
     public ClientServer(ServerSocket ss, TCPServer server) {
         super("ClientServer");
@@ -53,7 +53,7 @@ public class ClientServer extends Thread {
             }
 
         } catch(Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
