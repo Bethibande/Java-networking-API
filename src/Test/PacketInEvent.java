@@ -17,8 +17,8 @@ public class PacketInEvent implements Listener {
 
     @EventHandler
     public void onPacketReceived(PacketReceivedEvent e) {
-        if(e.getP() instanceof TestPacket) {
-            TestPacket tp = (TestPacket)e.getP();
+        if(e.getPacket() instanceof TestPacket) {
+            TestPacket tp = (TestPacket)e.getPacket();
             System.out.println("IN: " + tp.getMsg());
         }
     }

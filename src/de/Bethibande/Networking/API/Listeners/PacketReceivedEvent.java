@@ -6,10 +6,10 @@ import lombok.Getter;
 public class PacketReceivedEvent extends Event {
 
     @Getter
-    private Packet p;
+    private final Packet packet;
 
     public PacketReceivedEvent(Packet p) {
-        this.p = p;
+        this.packet = p;
     }
 
 }

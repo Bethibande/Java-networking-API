@@ -10,7 +10,7 @@ import lombok.Getter;
 public class PortPacket implements Listener {
 
     @Getter
-    private TCPConnector conn;
+    private final TCPConnector conn;
 
     public PortPacket(TCPConnector conn) {
         this.conn = conn;
@@ -18,7 +18,7 @@ public class PortPacket implements Listener {
 
     @EventHandler
     public void onPacketReceived(PacketReceivedEvent e) {
-        Packet p = e.getP();
+        Packet p = e.getPacket();
         if(p instanceof de.Bethibande.Networking.API.PortPacket) {
             de.Bethibande.Networking.API.PortPacket pp = (de.Bethibande.Networking.API.PortPacket)p;
             conn.connectToPort(pp.getPort());

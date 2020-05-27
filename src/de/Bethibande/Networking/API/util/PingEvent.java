@@ -15,7 +15,7 @@ public class PingEvent implements Listener {
 
     @EventHandler
     public void onPing(PacketReceivedEvent e) {
-        Packet p = e.getP();
+        Packet p = e.getPacket();
         if(p instanceof PingPacket) {
             //System.out.println("Sent back ping!");
             try {
@@ -24,7 +24,7 @@ public class PingEvent implements Listener {
             } catch(InterruptedException ex) {
                 ex.printStackTrace();
             }
-            SendPacket.sendPacket(client.getS(), e.getP());
+            SendPacket.sendPacket(client.getS(), e.getPacket());
             //System.out.println("Sent back ping!");
         }
     }

@@ -16,7 +16,7 @@ public class Main2 {
 
         Log.log(Log.LOG_LEVEL.INFO, "Connected!");
 
-        TCPClient client = connector.getC();
+        TCPClient client = connector.getClient();
 
         //other stuff
         EventManager.addListener(new PacketInEvent(client));

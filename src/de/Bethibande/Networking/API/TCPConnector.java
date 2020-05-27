@@ -12,7 +12,7 @@ import javax.swing.*;
 public class TCPConnector {
 
     @Getter
-    private TCPClient c;
+    private TCPClient client;
     @Getter
     @Setter
     private boolean connected = false;
@@ -23,8 +23,8 @@ public class TCPConnector {
     public void connect(String address, int port) {
         pp = new PortPacket(this);
         EventManager.addListener(pp);
-        c = new TCPClient(address, port);
-        c.start();
+        client = new TCPClient(address, port);
+        client.start();
         this.address = address;
 
     }
@@ -41,9 +41,9 @@ public class TCPConnector {
     }
 
     public void connectToPort(int port) {
-        c.kill();
-        c = new TCPClient(this.address, port);
-        c.start();
+        client.kill();
+        client = new TCPClient(this.address, port);
+        client.start();
         connected = true;
     }
 
