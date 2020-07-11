@@ -16,12 +16,11 @@ public class TCPServer extends Thread {
 
     public static ServerPingEvent spe;
 
-    @Getter
-    private int port;
+    public static boolean debug = true;
     @Getter
     private ServerSocket server;
     @Getter
-    private List<ClientServer> clients = new ArrayList<>();
+    private final int port;
     @Getter
     @Setter
     private boolean pingTimeout = true;
@@ -29,7 +28,9 @@ public class TCPServer extends Thread {
     @Setter
     private int timeout = 5000;
     @Getter
-    private PingThread pingThread;
+    private final List<ClientServer> clients = new ArrayList<>();
+    @Getter
+    private final PingThread pingThread;
 
     public TCPServer(int port) {
         super("TCPServer");
@@ -47,7 +48,7 @@ public class TCPServer extends Thread {
 
             server = new ServerSocket(this.port);
             this.pingThread.start();
-            Log.log(Log.LOG_LEVEL.INFO, "TCP Server started at 127.0.0.1:" + port);
+            if(debug) Log.log(Log.LOG_LEVEL.INFO, "TCP Server started at 127.0.0.1:" + port);
             while (true) {
                 Socket s = server.accept();
                 if(s != null && s.isBound() && s.isConnected()) {

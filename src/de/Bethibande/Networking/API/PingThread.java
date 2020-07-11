@@ -56,7 +56,7 @@ public class PingThread extends Thread {
 
                     for(ClientServer c : offline) {
                         server.getClients().remove(c);
-                        EventManager.runEvent(new ClientDisconnectEvent(c.getS().getInetAddress().getHostAddress(), c.getS().getPort()));
+                        EventManager.runEvent(new ClientDisconnectEvent(c.getS().getInetAddress().getHostAddress(), c.getS().getPort(), c));
                     }
                     offline.clear();
 
@@ -65,7 +65,7 @@ public class PingThread extends Thread {
                 sleep(server.getTimeout());
             }
         } catch(Exception e) {
-            e.printStackTrace();
+            if(TCPServer.debug) e.printStackTrace();
         }
     }
 

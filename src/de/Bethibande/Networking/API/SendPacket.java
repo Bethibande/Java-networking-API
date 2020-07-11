@@ -9,7 +9,7 @@ import java.net.*;
 
 public class SendPacket {
 
-    private static Gson g = new Gson();
+    private static final Gson g = new Gson();
 
     public static void sendMessage(Socket s, String message) {
         try {
@@ -19,7 +19,7 @@ public class SendPacket {
             w.println(message + " \n");
             w.flush();
         } catch(Exception e) {
-            e.printStackTrace();
+            if(TCPServer.debug) e.printStackTrace();
         }
     }
     public static void sendMessage2(Socket s, String message) {
@@ -33,7 +33,7 @@ public class SendPacket {
                         w.println(message + " \n");
                         w.flush();
                     } catch(Exception e) {
-                        e.printStackTrace();
+                        if(TCPServer.debug) e.printStackTrace();
                     }
                     interrupt();
                     return;

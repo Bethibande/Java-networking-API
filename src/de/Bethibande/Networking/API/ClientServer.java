@@ -33,7 +33,7 @@ public class ClientServer extends Thread {
             while(s == null || (!s.isConnected() && !s.isBound())) {
                 s = serverSocket.accept();
             }
-            Log.log(Log.LOG_LEVEL.INFO, "Socket connected: " + s.getInetAddress() + ":" + s.getPort());
+            if(TCPServer.debug) Log.log(Log.LOG_LEVEL.INFO, "Socket connected: " + s.getInetAddress() + ":" + s.getPort());
             BufferedReader reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
             while(true) {
                 String s = reader.readLine();
@@ -59,14 +59,14 @@ public class ClientServer extends Thread {
 
     public void kill(String reason) {
         try {
-            System.out.println("Killed server: " + s.getInetAddress() + ":" + s.getPort() + ", " + reason);
+            if(TCPServer.debug) System.out.println("Killed server: " + s.getInetAddress() + ":" + s.getPort() + ", " + reason);
 
             this.s.close();
             serverSocket.close();
 
             interrupt();
         } catch(Exception e) {
-            e.printStackTrace();
+            if(TCPServer.debug) e.printStackTrace();
         }
     }
 
